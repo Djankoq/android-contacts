@@ -1,6 +1,7 @@
 package ru.yandex.practicum.contacts.presentation.base;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DiffUtil;
 
 public class BaseListDiffCallback <D extends ListDiffInterface<D>> extends DiffUtil.ItemCallback<D>  {
@@ -13,5 +14,11 @@ public class BaseListDiffCallback <D extends ListDiffInterface<D>> extends DiffU
     @Override
     public boolean areContentsTheSame(@NonNull D oldItem, @NonNull D newItem) {
         return oldItem.equals(newItem);
+    }
+
+    @Nullable
+    @Override
+    public Object getChangePayload(@NonNull D oldItem, @NonNull D newItem){
+        return newItem;
     }
 }
